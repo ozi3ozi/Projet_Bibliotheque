@@ -1,0 +1,71 @@
+﻿@model IEnumerable<Projet_Bibliotheque.Models.Livres>
+@{
+    ViewBag.Title = "Recherche";
+}
+
+<h2>Recherche</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Titre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Auteur)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Categorie)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Quantite)
+        </th>
+        <th></th>
+    </tr>
+
+    @if (Model.Count() == 0)
+    {
+        <tr>
+            <td colspan="4">Introuvabl</td>
+
+        </tr>
+
+    }
+    else
+    {
+        foreach (var item in Model)
+        {
+
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Titre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Auteur)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Categorie)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quantite)
+                </td>
+
+            </tr>
+        }
+    }
+
+</table>
+<div id="reserver" >
+    @using (Html.BeginForm("Create", "Reservations", FormMethod.Get))
+    {
+        <input type="submit" id="myBtn" value="Reserver" style="width:80px; background-color:antiquewhite"/>
+
+    }
+    <br />
+    @using (Html.BeginForm("Create", "Prets", FormMethod.Get))
+    {
+        <input type="submit" id="myBtn" value="Prêter" style="width:80px; background-color:cyan"/>
+
+    }
+
+</div>

@@ -1,0 +1,49 @@
+﻿@model Projet_Bibliotheque.Models.Prets
+
+@{
+    ViewBag.Title = "Details";
+}
+
+
+<div>
+    <h4>Details des empruntes</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.date_de_Pret)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.date_de_Pret)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.date_de_retour)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.date_de_retour)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Livres.Titre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Livres.Titre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Membres.Nom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Membres.Nom)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Modifier", "Edit", new { id = Model.Id_Prets }) |
+    @Html.ActionLink("Retour a la liste", "Index")
+</p>

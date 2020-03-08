@@ -1,0 +1,49 @@
+﻿@model IEnumerable<Projet_Bibliotheque.Models.Reservation>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<button style="margin-bottom:10px;background-color:aquamarine">
+    @Html.ActionLink("Ajouter", "Create")
+</button>
+<table class="table" style="background-color:aliceblue">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Livres.Titre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Membres.Nom)
+        </th>
+        <th>Emprunter</th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Livres.Titre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Membres.Nom)
+        </td>
+        <td>
+
+            @using (Html.BeginForm("Create", "Prets", FormMethod.Get, new { id = item.Id_Membres }))
+            {
+
+                <button style="background-color:forestgreen"> Emprunter </button>
+            }
+
+        </td>
+        <td>
+            @Html.ActionLink("Modifier", "Edit", new { id = item.Id_Reserv }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id_Reserv }) |
+            @Html.ActionLink("Supprimer", "Delete", new { id=item.Id_Reserv })
+        </td>
+    </tr>
+}
+
+</table>

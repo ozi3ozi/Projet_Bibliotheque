@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Projet_Bibliotheque.Models.Livres>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Liste</h2>
+
+<button style="margin-bottom:10px;background-color:aquamarine">
+    @Html.ActionLink("Ajouter Livre", "Create")
+</button>
+<table class="table" style="background-color:aliceblue">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Titre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Auteur)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Categorie)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Quantite)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Titre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Auteur)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Categorie)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantite)
+            </td>
+            <td>
+                @Html.ActionLink("Modifier", "Edit", new { id = item.Id_Livres }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id_Livres }) |
+                @Html.ActionLink("Supprimer", "Delete", new { id = item.Id_Livres })
+            </td>
+        </tr>
+    }
+
+</table>
